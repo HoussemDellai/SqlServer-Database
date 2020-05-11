@@ -20,16 +20,12 @@ steps:
 
 - script: |
    type $(Build.ArtifactStagingDirectory)\*.sql > $(Build.ArtifactStagingDirectory)\Dummy.sql
-   
+  displayName: Merge SQL Scripts into Single Script 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: SQL'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: SQL
-
-- script: 'echo $(Build.ArtifactStagingDirectory)'
-
-- script: 'ls $(Build.ArtifactStagingDirectory)'
 
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
