@@ -1,4 +1,4 @@
-﻿user [Products]
+﻿use [Products]
 
 DROP TABLE [dbo].[Product]
 
