@@ -11,7 +11,8 @@ steps:
   displayName: 'Build solution SqlServerDatabase.sln'
   inputs:
     solution: SqlServerDatabase.sln
-    msbuildArguments: '--configuration Release /p:OutDir=$(Build.ArtifactStagingDirectory)'
+    configuration: Release
+    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: SQL'
