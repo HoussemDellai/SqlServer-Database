@@ -1,7 +1,4 @@
-﻿DROP TABLE [dbo].[Product];
-
-
-CREATE TABLE [dbo].[Product]
+﻿CREATE TABLE [dbo].[Product2]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(50) NULL, 
