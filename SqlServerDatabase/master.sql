@@ -7,8 +7,8 @@ GO
 
 :On Error exit
 
-:r '$(Build.ArtifactStagingDirectory)\Product.sql'
-:r '$'(Build.ArtifactStagingDirectory)\Inventory.sql'
+:r Product.sql
+:r Inventory.sql
 
 PRINT 'DATABASE CREATE IS COMPLETE'
 GO
