@@ -29,7 +29,7 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
   inputs:
-    azureSubscription: '$subscriptionID'
+    azureSubscription: '$(subscriptionID)'
     AuthenticationType: connectionString
     ConnectionString: '$(connectionString)'
     deployType: SqlTask
