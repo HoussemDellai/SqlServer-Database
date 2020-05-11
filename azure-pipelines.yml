@@ -14,12 +14,12 @@ steps:
   inputs:
     SourceFolder: SqlServerDatabase
     Contents: '**.sql'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/SQL'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     preserveTimestamp: true
 
 - script: |
-   type $(Build.ArtifactStagingDirectory)\SQL\*.sql > $(Build.ArtifactStagingDirectory)\SQL\Dummy.sql
+   type $(Build.ArtifactStagingDirectory)\*.sql > $(Build.ArtifactStagingDirectory)\Dummy.sql
    
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: SQL'
