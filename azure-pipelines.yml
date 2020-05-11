@@ -29,9 +29,9 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
   inputs:
-    azureSubscription: '$(subscriptionID)'
+    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
     AuthenticationType: connectionString
     ConnectionString: '$(connectionString)'
     deployType: SqlTask
-    SqlFile: '$(build.artifactstagingdirectory)/Product.sql'
+    SqlFile: '$(System.DefaultWorkingDirectory)/_subodhde.SqlServer-Database/SQL/*.sql'
 
