@@ -26,6 +26,10 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: SQL
 
+- script: 'echo $(Build.ArtifactStagingDirectory)'
+
+- script: 'ls $(Build.ArtifactStagingDirectory)'
+
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
   inputs:
