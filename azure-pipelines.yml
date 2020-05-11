@@ -5,6 +5,7 @@ pool:
   vmImage: vs2017-win2016
   demands: msbuild
 
+
 steps:
 - task: MSBuild@1
   displayName: 'Build solution SqlServerDatabase.sln'
