@@ -6,8 +6,7 @@ pool:
   demands: msbuild
 
 variables:
-  ConnectionString: 'Server=tcp:sql-db-subodh.database.windows.net,1433;Initial Catalog=Products;Persist Security Info=False;User ID=subodh;Password=M0nteCar10@132;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-
+  
 steps:
 - task: MSBuild@1
   displayName: 'Build solution SqlServerDatabase.sln'
