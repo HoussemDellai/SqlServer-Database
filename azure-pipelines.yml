@@ -7,7 +7,7 @@ pool:
 
 variables:
   ConnectionString: 'Server=tcp:sqlserver-demo-subodh.database.windows.net,1433;Initial Catalog=Products;Persist Security Info=False;User ID=subodh;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-
+  subscriptionID: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
 
 steps:
 
@@ -39,8 +39,8 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
   inputs:
-    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
+    azureSubscription: '$subscriptionID'
     AuthenticationType: connectionString
     ConnectionString: '$(connectionString)'
     deployType: SqlTask
-    SqlFile: '$(Build.ArtifactStagingFirectory)/**/SQL/Product.sql'
+    SqlFile: '$(Build.ArtifactStagingFirectory)/**/SQL/**.sql'
