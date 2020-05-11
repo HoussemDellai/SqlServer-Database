@@ -5,6 +5,8 @@ pool:
   vmImage: vs2017-win2016
   demands: msbuild
 
+variables:
+  ConnectionString: 'Server=tcp:sql-db-subodh.database.windows.net,1433;Initial Catalog=Products;Persist Security Info=False;User ID=subodh;Password=M0nteCar10@132;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
 
 steps:
 - task: MSBuild@1
@@ -20,4 +22,10 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: SQL
 
-
+- task: SqlAzureDacpacDeployment@1
+  displayName: 'Azure SQL DacpacTask'
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
+    AuthenticationType: connectionString
+    ConnectionString: 'Server=tcp:"sql-db-subodh.database.windows.net",1433;Initial Catalog=Products;Persist Security Info=False;User ID=subodh;Password=M0nteCar10@132;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30'
+    DacpacFile: '$(System.DefaultWorkingDirectory)/_subodhde.SqlServer-Database/SQL/SqlServerDatabase.dacpac'
