@@ -4,9 +4,6 @@ pool:
   vmImage: vs2017-win2016
 
 
-variables:
-    subscriptionID: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
-
 steps:
 
 - task: CopyFiles@2
