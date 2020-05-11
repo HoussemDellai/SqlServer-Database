@@ -26,16 +26,6 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: SQL
 
-#- task: SqlAzureDacpacDeployment@1
-#  displayName: 'Azure SQL DacpacTask'
-#  inputs:
-#    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
-#    AuthenticationType: connectionString
-#    ConnectionString: '$(ConnectionString)'
-#    deployType: sqlTask
-#    DacpacFile: '$(Build.ArtifactStagingDirectory)/SqlServerDatabase.dacpac'
-
-
 - task: SqlAzureDacpacDeployment@1
   displayName: 'Azure SQL SqlTask'
   inputs:
@@ -44,3 +34,4 @@ steps:
     ConnectionString: '$(connectionString)'
     deployType: SqlTask
     SqlFile: '$(Build.ArtifactStagingFirectory)/**/SQL/**.sql'
+
