@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[Inventory]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Name] VARCHAR(50) NULL, 
+    [Cost] FLOAT NULL, 
+    [Color] NVARCHAR(50) NULL,
+    [Size] VARCHAR(50) NOT NULL,
+    CATEGORY VARCHAR(100)
+)
