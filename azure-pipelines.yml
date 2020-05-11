@@ -14,10 +14,13 @@ steps:
   inputs:
     SourceFolder: SqlServerDatabase
     Contents: '**.sql'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/SQL'
     CleanTargetFolder: true
     preserveTimestamp: true
 
+- script: |
+   type $(Build.ArtifactStagingDirectory)\SQL\*.sql > $(Build.ArtifactStagingDirectory)\SQL\Dummy.sql
+   
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: SQL'
   inputs:
@@ -35,5 +38,5 @@ steps:
     AuthenticationType: connectionString
     ConnectionString: '$(ConnectionString)'
     deployType: SqlTask
-    SqlFile: '$(Build.ArtifactStagingDirectory)/Inventory.sql'
+    SqlFile: '$(Build.ArtifactStagingDirectory)/Dummy.sql'
 
