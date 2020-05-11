@@ -3,11 +3,11 @@ trigger:
 
 pool:
   vmImage: vs2017-win2016
-  demands: msbuild
+
 
 variables:
   ConnectionString: 'Server=tcp:sqlserver-demo-subodh.database.windows.net,1433;Initial Catalog=Products;Persist Security Info=False;User ID=subodh;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-
+  subscriptionID: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
 
 steps:
 
@@ -26,10 +26,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: SQL
 
-#- task: SqlAzureDacpacDeployment@1
-#  displayName: 'Azure SQL DacpacTask'
-#  inputs:
-#    azureSubscription: 'Visual Studio Enterprise Subscription (13d31264-17e6-4ba7-9ee8-6fdc87d6a4ee)'
-#    AuthenticationType: connectionString
-#    ConnectionString: '$(ConnectionString)'
-#    DacpacFile: '$(Build.ArtifactStagingDirectory)/SqlServerDatabase.dacpac'
+- task: SqlAzureDacpacDeployment@1
+  displayName: 'Azure SQL SqlTask'
+  inputs:
+    azureSubscription: '$subscriptionID'
+    AuthenticationType: connectionString
+    ConnectionString: '$(connectionString)'
+    deployType: SqlTask
+    SqlFile: '$(Build.ArtifactStagingFirectory)/**/SQL/**.sql'
+
