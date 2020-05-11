@@ -1,5 +1,5 @@
 trigger:
-- '*'
+- 'master'
 
 pool:
   vmImage: vs2017-win2016
@@ -16,7 +16,7 @@ steps:
   inputs:
     SourceFolder: SqlServerDatabase
     Contents: '**.sql'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/SQL'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     CleanTargetFolder: true
     preserveTimestamp: true
 
