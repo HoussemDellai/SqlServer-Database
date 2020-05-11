@@ -1,0 +1,22 @@
+trigger:
+- '*'
+
+pool:
+  name: Azure-Pipelines
+  vmImage: vs2017-win2016
+  demands: msbuild
+
+steps:
+- task: MSBuild@1
+  displayName: 'Build solution SqlServerDatabase.sln'
+  inputs:
+    solution: SqlServerDatabase.sln
+    msbuildArguments: '/p:OutDir=$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: SQL'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: SQL
+
+
