@@ -33,5 +33,5 @@ steps:
     AuthenticationType: connectionString
     ConnectionString: '$(connectionString)'
     deployType: SqlTask
-    SqlFile: '$(Build.ArtifactStagingDirectory)/*.sql'
+    SqlFile: '$(Build.ArtifactStagingDirectory)/Inventory.sql'
 
