@@ -1,14 +1,9 @@
-/* SCRIPT: MASTER.sql */
-
-
--- This is the main caller for each script
-SET NOCOUNT ON
-GO
-
-:On Error exit
-
-:r Product.sql
-:r Inventory.sql
-
-PRINT 'DATABASE CREATE IS COMPLETE'
-GO
+CREATE TABLE [dbo].[MASTER]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Name] VARCHAR(50) NULL, 
+    [Cost] FLOAT NULL, 
+    [Color] NVARCHAR(50) NULL,
+    [Size] VARCHAR(50) NOT NULL,
+    CATEGORY VARCHAR(100)
+)
