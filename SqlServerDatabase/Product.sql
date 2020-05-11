@@ -1,9 +1,6 @@
-﻿use [Products]
+﻿DROP TABLE [dbo].[Product];
 
-GO
-DROP TABLE [dbo].[Product];
 
-GO
 CREATE TABLE [dbo].[Product]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
