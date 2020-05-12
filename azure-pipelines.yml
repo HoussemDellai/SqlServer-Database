@@ -1,0 +1,35 @@
+
+
+pool:
+  vmImage: vs2017-win2016
+
+
+steps:
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)/SQL'
+  inputs:
+    SourceFolder: SqlServerDatabase
+    Contents: '**.sql'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    preserveTimestamp: true
+
+- script: |
+   type $(Build.ArtifactStagingDirectory)\*.sql > $(Build.ArtifactStagingDirectory)\Dummy.sql
+  displayName: Merge SQL Scripts into Single Script 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: SQL'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: SQL
+
+- task: SqlAzureDacpacDeployment@1
+  displayName: 'Azure SQL SqlTask'
+  inputs:
+    azureSubscription: '$(subscriptionID)'
+    AuthenticationType: connectionString
+    ConnectionString: '$(ConnectionString)'
+    deployType: SqlTask
+    SqlFile: '$(Build.ArtifactStagingDirectory)/Dummy.sql'
+

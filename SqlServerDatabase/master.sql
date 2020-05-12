@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[Product2]
+CREATE TABLE [dbo].[MASTER]
 (
 	[Id] INT NOT NULL PRIMARY KEY, 
     [Name] VARCHAR(50) NULL, 
