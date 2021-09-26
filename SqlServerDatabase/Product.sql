@@ -5,5 +5,6 @@
     [Cost] INT NULL, 
     [Color] NVARCHAR(50) NULL, 
     [sepc] NCHAR(10) NULL, 
-    [release date] DATE NULL
+    [release date] DATE NULL, 
+    [rate] NCHAR(10) NULL
 )
