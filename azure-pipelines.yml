@@ -18,7 +18,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/SqlServer-Database/SqlServerDatabase/SqlServerDatabase.sqlproj'
+    projects: '**/SqlServerDatabase/SqlServerDatabase.sqlproj'
     arguments: '--configuration Release  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
 - task: ArchiveFiles@2
   inputs:
