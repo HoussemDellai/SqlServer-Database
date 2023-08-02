@@ -5,6 +5,8 @@
 variables:
 - name: TargetsPath
   value: /Users/gamu/.azuredatastudio/extensions/microsoft.sql-database-projects-1.2.0/BuildDirectory 
+- name: AppName
+  value: SqlDatabaseProject
 
 trigger:
 - master
@@ -19,11 +21,16 @@ steps:
   inputs:
     command: 'build'
     projects: '**/SqlServerDatabase/SqlServerDatabase.sqlproj'
-    arguments: '--configuration Release  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
+    arguments: '--configuration Release --output $(Build.BinariesDirectory)  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(AppName)_$(Build.BuildId).zip'
     replaceExistingArchive: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.BinariesDirectory)'
+    ArtifactName: '$(AppName)'
+    publishLocation: 'Container'
