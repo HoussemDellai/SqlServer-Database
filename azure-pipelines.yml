@@ -31,6 +31,6 @@ steps:
     replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(AppName)_$(Build.BuildId).zip'
+    PathtoPublish: '$(Build.BinariesDirectory)'
     ArtifactName: '$(AppName)'
     publishLocation: 'Container'
