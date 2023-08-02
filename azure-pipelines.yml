@@ -2,6 +2,9 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+variables:
+- name: TargetsPath
+  value: /Users/gamu/.azuredatastudio/extensions/microsoft.sql-database-projects-1.2.0/BuildDirectory 
 
 trigger:
 - master
@@ -16,7 +19,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/SqlServerDatabase/SqlServerDatabase.sqlproj'
-    arguments: '--configuration Release  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TARGET_PATH)'
+    arguments: '--configuration Release  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
