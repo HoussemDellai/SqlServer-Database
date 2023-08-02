@@ -19,7 +19,7 @@ steps:
   inputs:
     command: 'build'
     projects: '**/SqlServerDatabase/SqlServerDatabase.sqlproj'
-    arguments: '--configuration Release  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
+    arguments: '--configuration Release --output $(Build.BinariesDirectory)  /p:NetCoreBuild=true /p:NETCoreTargetsPath=$(TargetsPath)'
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
