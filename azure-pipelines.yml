@@ -5,6 +5,8 @@
 variables:
 - name: TargetsPath
   value: /Users/gamu/.azuredatastudio/extensions/microsoft.sql-database-projects-1.2.0/BuildDirectory 
+- name: AppName
+  value: SqlDatabaseProject
 
 trigger:
 - master
@@ -25,5 +27,10 @@ steps:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(AppName)_$(Build.BuildId).zip'
     replaceExistingArchive: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(AppName)_$(Build.BuildId).zip'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
