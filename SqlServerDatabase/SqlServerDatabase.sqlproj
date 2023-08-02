@@ -60,6 +60,7 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
+    <Build Include="Customers.sql" />
     <Build Include="Product.sql" />
   </ItemGroup>
   <ItemGroup>
